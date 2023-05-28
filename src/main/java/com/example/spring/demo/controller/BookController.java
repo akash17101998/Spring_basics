@@ -15,7 +15,7 @@ public class BookController{
     private BookService bookService;
 //    @RequestMapping(value = "/books",method = RequestMethod.GET)   // define method and url value
 //    @ResponseBody          // this will return the string as it is
-    @GetMapping(value = "/books")
+    @GetMapping("/books")
     public List<Books> getBooks(){
 //        Books books = new Books();
 //        books.setId(1);
@@ -25,8 +25,14 @@ public class BookController{
         return this.bookService.getAllBooks();
     }
 
-    @GetMapping(value = "/book/{id}")
+    @GetMapping("/book/{id}")
     public Books getBookId(@PathVariable("id") int id){
         return this.bookService.getBookById(id);
+    }
+
+    @PostMapping("/books")
+    public Books addBook(@RequestBody Books books){
+        this.bookService.addBook(books);
+        return books;
     }
 }
