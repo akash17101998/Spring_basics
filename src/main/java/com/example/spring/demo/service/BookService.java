@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService{
@@ -36,5 +37,14 @@ public class BookService{
     // add book
     public void addBook(Books b){
         list.add(b);
+    }
+
+    public void deleteBook(int id){
+        try {
+            list = list.stream().filter(books -> books.getId() != id).
+                    collect(Collectors.toList());
+        }catch (Exception e){
+            System.out.println("No such book");
+        }
     }
 }
