@@ -1,6 +1,14 @@
 package com.example.spring.demo.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Library")
 public class Books{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "bookId")
     private int id;
     private String title;
     private String author;
