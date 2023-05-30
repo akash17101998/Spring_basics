@@ -26,17 +26,17 @@ public class BookService{
         Books book = null;
         try {
             book = list.stream().filter(e->e.getId()==id).findFirst().get();
-//            return book;
         }catch (Exception e){
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
             System.out.println("No such book id");
         }
         return book;
     }
 
     // add book
-    public void addBook(Books b){
+    public Books addBook(Books b){
         list.add(b);
+        return b;
     }
 
     public void deleteBook(int id){
@@ -46,5 +46,17 @@ public class BookService{
         }catch (Exception e){
             System.out.println("No such book");
         }
+    }
+
+
+    public Books updateBook(Books books,int id){
+        list.stream().map(b->{   // map is used to some operation in a list
+            if (b.getId()==id){
+                b.setTitle(books.getTitle());
+                b.setAuthor(books.getAuthor());
+            }
+            return b;
+        }).collect(Collectors.toList());
+        return books;
     }
 }
