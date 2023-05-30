@@ -23,7 +23,7 @@ public class BookController{
         if (list.size()<=0){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(list);
+        return ResponseEntity.of(Optional.of(list));
     }
 
     @GetMapping("/book/{id}")
@@ -40,10 +40,10 @@ public class BookController{
         Books b= null;
         try {
             b =this.bookService.addBook(books);
-            return ResponseEntity.of(Optional.of(b));
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         }catch (Exception e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(b);
         }
     }
 
