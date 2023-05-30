@@ -1,9 +1,7 @@
 package com.example.spring.demo.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 public class Author{
@@ -12,6 +10,9 @@ public class Author{
     private int authorId;
     private String fname;
     private String lname;
+    @OneToOne(mappedBy = "author")   //not create extra field
+    @JsonBackReference         // to avoid the infinite loop and not covert the field in json so not show data in postman
+    private Books books;
 
     @Override
     public String toString(){

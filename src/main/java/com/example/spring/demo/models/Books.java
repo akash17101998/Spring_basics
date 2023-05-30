@@ -1,5 +1,6 @@
 package com.example.spring.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,7 +12,8 @@ public class Books{
     @Column(name = "bookId")
     private int id;
     private String title;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)  // cascade save to author data and then book data
+    @JsonManagedReference            // to avoid the infinite loop
     private Author author;
 
     public Books(){
