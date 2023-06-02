@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterate</title>
+</head>
+<body>
+<h1 th:text="${e}"></h1>
+<ul>
+     <li th:each="n,status: ${e}">
+         <span th:style="${status.odd}?'font-weight:bold':''" th:text="${status.index+1}+' '+${n}"></span>
+
+     </li>
+</ul>
+</body>
+</html>
