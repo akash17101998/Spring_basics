@@ -30,4 +30,13 @@ public class LeafController{
         m.addAttribute("e",e);
         return "iterate";
     }
+
+    // condition
+    @GetMapping("/condition")
+    public String condition(Model m){
+        System.out.println("this is conditional");
+        m.addAttribute("isActive",true);
+        m.addAttribute("gender","F");
+        return "condition";
+    }
 }

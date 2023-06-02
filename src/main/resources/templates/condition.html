@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition</title>
+</head>
+<body>
+<h1>This page for conditional</h1>
+<h2 th:text="${isActive}?'ACTIVE':'NOT ACTIVE'"></h2>
+<h1 th:if="${gender}=='M'">Male</h1>
+<h1 th:unless="${gender}=='M'">Female</h1>
+</body>
+</html>
